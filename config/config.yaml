@@ -1,0 +1,13 @@
+# Dnero ETH-RPC configuration
+dnero:
+  rpcEndpoint: "http://127.0.0.1:15511/rpc"
+rpc:
+  enabled: true
+  httpAddress: "127.0.0.1"
+  httpPort: 15444
+  wsAddress: "127.0.0.1"
+  wsPort: 15445
+  timeoutSecs: 600 
+  maxConnections: 2048
+log:
+  levels: "*:debug"
