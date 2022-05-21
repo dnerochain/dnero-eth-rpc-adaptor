@@ -22,7 +22,7 @@ func (e *EthRPCService) GetTransactionCount(ctx context.Context, address string,
 	}
 
 	client := rpcc.NewRPCClient(common.GetDneroRPCEndpoint())
-	rpcRes, rpcErr := client.Call("dnero.GetAccount", trpc.GetAccountArgs{Address: address, Height: height, Preview: true})
+	rpcRes, rpcErr := client.Call("dnero.GetAccount", trpc.GetAccountArgs{Address: address, Preview: true})
 
 	parse := func(jsonBytes []byte) (interface{}, error) {
 		trpcResult := trpc.GetAccountResult{Account: &types.Account{}}
