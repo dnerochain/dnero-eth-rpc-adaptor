@@ -44,7 +44,7 @@ func (e *NetRPCService) Version(ctx context.Context) (result string, err error) 
 	}
 
 	dneroChainID := dneroChainIDResult.chainID
-	ethChainID := types.MapChainID(dneroChainID, blockHeight).Uint64()
+	ethChainID := types.MapChainID(dneroChainID, blockHeight).Uint64() //TODO: Upgrade
 	result = hexutil.EncodeUint64(ethChainID)
 
 	return result, nil
