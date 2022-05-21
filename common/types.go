@@ -121,8 +121,8 @@ type DneroGetBlockResultInner struct {
 	Timestamp          *tcommon.JSONBig          `json:"timestamp"`
 	Proposer           tcommon.Address           `json:"proposer"`
 	HCC                tcore.CommitCertificate   `json:"hcc"`
-	GuardianVotes      *tcore.AggregatedVotes    `json:"guardian_votes"`
-	EliteEdgeNodeVotes *tcore.AggregatedEENVotes `json:"elite_edge_node_votes"`
+	SentryVotes      *tcore.AggregatedVotes    `json:"sentry_votes"`
+	//EliteEdgeNodeVotes *tcore.AggregatedEENVotes `json:"elite_edge_node_votes"`
 
 	Children []common.Hash     `json:"children"`
 	Status   tcore.BlockStatus `json:"status"`
