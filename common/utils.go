@@ -252,10 +252,10 @@ func MapChainID(chainIDStr string, blockNumber string) string {
 	if HexStr2Uint64(blockNumber) < tcommon.HeightRPCCompatibility {
 		return mapChainIDWithoutOffset(chainIDStr)
 	}
-	if chainIDStr == "0x155a" { // correspond to the Ethereum mainnet | ChainID: 5466
+	if chainIDStr == "0x155a" { // ChainID: 5466
 		return "mainnet"
-	} else if chainIDStr == "0x155b" { // ChainID: 5467
-		return "testnet"
+	} else if chainIDStr == "0x155b" { // MetaMask mainnet ChainID: 5467 
+		return "testnet" // Assigned To MetaMask mainnet - Support DTOKEN Only
 	} else if chainIDStr == "0x155c" { // correspond to Ropsten
 		return "testnet_sapphire"
 	} else if chainIDStr == "0x155d" { // correspond to Rinkeby
