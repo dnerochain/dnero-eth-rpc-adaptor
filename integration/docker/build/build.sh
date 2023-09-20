@@ -9,9 +9,9 @@ SCRIPTPATH=$(dirname "$0")
 
 echo $SCRIPTPATH
 
-if [ "$1" =  "force" ] || [[ "$(docker images -q dnero_eth_rpc_builder 2> /dev/null)" == "" ]]; then
-    docker build -t dnero_eth_rpc_builder $SCRIPTPATH
+if [ "$1" =  "force" ] || [[ "$(docker images -q dnero_eth_rpc_adaptor_builder 2> /dev/null)" == "" ]]; then
+    docker build -t dnero_eth_rpc_adaptor_builder $SCRIPTPATH
 fi
 
-docker run -it -v "$GOPATH:/go" dnero_eth_rpc_builder
+docker run -it -v "$GOPATH:/go" dnero_eth_rpc_adaptor_builder
 

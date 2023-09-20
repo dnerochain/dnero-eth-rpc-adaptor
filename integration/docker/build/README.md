@@ -1,1 +1,1 @@
-A docker container to build linux binary for dnero-eth-rpc.
+A docker container to build linux binary for dnero-eth-rpc-adaptor.
