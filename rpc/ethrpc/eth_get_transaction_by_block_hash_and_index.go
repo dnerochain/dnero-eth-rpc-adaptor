@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 	tcommon "github.com/dnerochain/dnero/common"
 	"github.com/dnerochain/dnero/common/hexutil"
 	"github.com/dnerochain/dnero/ledger/types"
@@ -53,9 +53,9 @@ func GetIndexedTransactionFromBlock(rpcRes *rpcc.RPCResponse, rpcErr error, txIn
 				} else {
 					result.To = &tx.To.Address
 				}
-				result.GasPrice = hexutil.Uint64(tx.GasPrice.Uint64())
+				result.GasPrice = "0x" + tx.GasPrice.Text(16)
 				result.Gas = hexutil.Uint64(tx.GasLimit)
-				result.Value = hexutil.Uint64(tx.From.Coins.DTokenWei.Uint64())
+				result.Value = "0x" + tx.From.Coins.DTokenWei.Text(16)
 				result.Input = tx.Data.String()
 				result.Nonce = hexutil.Uint64(tx.From.Sequence) - 1 // off-by-one: Ethereum's account nonce starts from 0, while Dnero's account sequnce starts from 1
 				data := tx.From.Signature.ToBytes()
@@ -70,7 +70,7 @@ func GetIndexedTransactionFromBlock(rpcRes *rpcc.RPCResponse, rpcErr error, txIn
 					result.To = &tx.Outputs[0].Address
 				}
 				result.Gas = hexutil.Uint64(tx.Fee.DTokenWei.Uint64())
-				result.Value = hexutil.Uint64(tx.Inputs[0].Coins.DTokenWei.Uint64())
+				result.Value = "0x" + tx.Inputs[0].Coins.DTokenWei.Text(16)
 				result.Nonce = hexutil.Uint64(tx.Inputs[0].Sequence) - 1 // off-by-one: Ethereum's account nonce starts from 0, while Dnero's account sequnce starts from 1
 				data := tx.Inputs[0].Signature.ToBytes()
 				GetRSVfromSignature(data, &result)

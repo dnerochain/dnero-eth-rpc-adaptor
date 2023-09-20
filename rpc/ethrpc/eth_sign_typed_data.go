@@ -7,7 +7,7 @@ import (
 
 	"github.com/dnerochain/dnero/common/hexutil"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 )
 
 // ------------------------------- eth_signTypedData -----------------------------------

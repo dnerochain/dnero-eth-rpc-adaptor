@@ -6,10 +6,10 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 
-	//trpc "github.com/dnerochain/dnero/rpc"
-	//rpcc "github.com/ybbus/jsonrpc"
+	trpc "github.com/dnerochain/dnero/rpc"
+	rpcc "github.com/ybbus/jsonrpc"
 )
 
 // ------------------------------- eth_getBlockByNumber -----------------------------------
@@ -34,16 +34,16 @@ func (e *EthRPCService) GetBlockByNumber(ctx context.Context, numberStr string, 
 
 	maxRetry := 5
 	for i := 0; i < maxRetry; i++ { // It might take some time for a block to be finalized, retry a few times
-//		client := rpcc.NewRPCClient(common.GetDneroRPCEndpoint())
-//		rpcRes, rpcErr := client.Call("dnero.GetBlockByHeight", trpc.GetBlockByHeightArgs{
-//			Height: height})
+		client := rpcc.NewRPCClient(common.GetDneroRPCEndpoint())
+		rpcRes, rpcErr := client.Call("dnero.GetBlockByHeight", trpc.GetBlockByHeightArgs{
+			Height: height})
 
 		//logger.Infof("eth_getBlockByNumber, rpcRes: %v, rpcRes.Rsult: %v", rpcRes, rpcRes.Result)
 
-//		result, err = GetBlockFromTRPCResult(chainID, rpcRes, rpcErr, txDetails)
-//		if err == nil {
-//			return result, err
-//		}
+		result, err = GetBlockFromTRPCResult(chainID, rpcRes, rpcErr, txDetails)
+		if err == nil {
+			return result, err
+		}
 
 		time.Sleep(blockInterval) // one block duration
 	}

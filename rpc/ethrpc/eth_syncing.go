@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 
 	"github.com/dnerochain/dnero/common/hexutil"
 	trpc "github.com/dnerochain/dnero/rpc"

@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 
 	tcommon "github.com/dnerochain/dnero/common"
 	"github.com/dnerochain/dnero/common/hexutil"

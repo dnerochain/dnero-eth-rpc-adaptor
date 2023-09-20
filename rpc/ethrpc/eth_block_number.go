@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 	hexutil "github.com/dnerochain/dnero/common/hexutil"
 )
 

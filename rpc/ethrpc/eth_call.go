@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/spf13/viper"
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 
 	trpc "github.com/dnerochain/dnero/rpc"
 	rpcc "github.com/ybbus/jsonrpc"

@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"math"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 	hexutil "github.com/dnerochain/dnero/common/hexutil"
 	"github.com/dnerochain/dnero/ledger/types"
 	trpc "github.com/dnerochain/dnero/rpc"
@@ -22,7 +22,7 @@ func (e *EthRPCService) GetTransactionCount(ctx context.Context, address string,
 	}
 
 	client := rpcc.NewRPCClient(common.GetDneroRPCEndpoint())
-	rpcRes, rpcErr := client.Call("dnero.GetAccount", trpc.GetAccountArgs{Address: address, Preview: true})
+	rpcRes, rpcErr := client.Call("dnero.GetAccount", trpc.GetAccountArgs{Address: address, Height: height, Preview: true})
 
 	parse := func(jsonBytes []byte) (interface{}, error) {
 		trpcResult := trpc.GetAccountResult{Account: &types.Account{}}

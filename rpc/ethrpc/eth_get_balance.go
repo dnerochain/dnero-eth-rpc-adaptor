@@ -6,7 +6,7 @@ import (
 	"math"
 	"math/big"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 	"github.com/dnerochain/dnero/ledger/types"
 	trpc "github.com/dnerochain/dnero/rpc"
 	rpcc "github.com/ybbus/jsonrpc"
@@ -23,9 +23,7 @@ func (e *EthRPCService) GetBalance(ctx context.Context, address string, tag stri
 	}
 
 	client := rpcc.NewRPCClient(common.GetDneroRPCEndpoint())
-	rpcRes, rpcErr := client.Call("dnero.GetAccount", trpc.GetAccountArgs{Address: address})//, Height: height})
-	//TODO: Upgrade
-	//rpcRes, rpcErr := client.Call("dnero.GetAccount", trpc.GetAccountArgs{Address: address, Height: height})
+	rpcRes, rpcErr := client.Call("dnero.GetAccount", trpc.GetAccountArgs{Address: address, Height: height})
 
 	parse := func(jsonBytes []byte) (interface{}, error) {
 		trpcResult := trpc.GetAccountResult{Account: &types.Account{}}

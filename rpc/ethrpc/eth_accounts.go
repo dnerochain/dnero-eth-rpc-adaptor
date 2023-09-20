@@ -3,7 +3,7 @@ package ethrpc
 import (
 	"context"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 )
 
 // ------------------------------- eth_accounts -----------------------------------

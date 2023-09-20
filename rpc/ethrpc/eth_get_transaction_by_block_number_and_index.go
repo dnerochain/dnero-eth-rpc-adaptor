@@ -3,7 +3,7 @@ package ethrpc
 import (
 	"context"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 	trpc "github.com/dnerochain/dnero/rpc"
 
 	rpcc "github.com/ybbus/jsonrpc"

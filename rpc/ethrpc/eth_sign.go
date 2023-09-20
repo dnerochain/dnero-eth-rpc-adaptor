@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 	"github.com/dnerochain/dnero/common/hexutil"
 	// "golang.org/x/crypto/sha3"
 )

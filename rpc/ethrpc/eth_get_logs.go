@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/spf13/viper"
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 
 	tcommon "github.com/dnerochain/dnero/common"
 	hexutil "github.com/dnerochain/dnero/common/hexutil"
