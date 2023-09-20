@@ -8,10 +8,10 @@ import (
 
 	erpclib "github.com/ethereum/go-ethereum/rpc"
 	"github.com/spf13/viper"
-	"github.com/dnerochain/dnero-eth-rpc/common"
-	"github.com/dnerochain/dnero-eth-rpc/rpc/ethrpc"
-	"github.com/dnerochain/dnero-eth-rpc/rpc/netrpc"
-	"github.com/dnerochain/dnero-eth-rpc/rpc/web3rpc"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/rpc/ethrpc"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/rpc/netrpc"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/rpc/web3rpc"
 )
 
 var logger *log.Entry = log.WithFields(log.Fields{"prefix": "rpc"})
