@@ -1,8 +1,8 @@
-# dnero-eth-rpc
+## dnero-eth-rpc-adaptor
 
-The `dnero-eth-rpc` project is aiming to provide an adaptor which translates the Dnero RPC interface to the Ethereum RPC interface. Please find the currently supported Ethereum RPC APIs [here](https://github.com/dnerochain/dnero-eth-rpc#rpc-apis).
+The `dnero-eth-rpc-adaptor` project is aiming to provide an adaptor which translates the Dnero RPC interface to the Ethereum RPC interface. Please find the currently supported Ethereum RPC APIs [here](https://github.com/dnerochain/dnero-eth-rpc-adaptor#rpc-apis).
 
-## Setup
+### Setup
 
 First, install **Go 1.14.2** and set environment variables `GOPATH` , `GOBIN`, and `PATH`. Next, clone the Dnero blockchain repo and install Dnero following the steps below:
 
@@ -16,35 +16,35 @@ export GO111MODULE=on
 make install
 ```
 
-Next, clone the `dnero-eth-rpc` repo:
+Next, clone the `dnero-eth-rpc-adaptor` repo:
 
 ```
 cd $GOPATH/src/github.com/dnerochain
-git clone https://github.com/dnerochain/dnero-eth-rpc
+git clone https://github.com/dnerochain/dnero-eth-rpc-adaptor
 ```
 
-## Build and Install
+### Build and Install
 
-### Build the binary under macOS or Linux
-Following the steps below to build the `dnero-eth-rpc` binary and copy it into your `$GOPATH/bin`.
+#### Build the binary under macOS or Linux
+Following the steps below to build the `dnero-eth-rpc-adaptor` binary and copy it into your `$GOPATH/bin`.
 
 ```
-export DNERO_ETH_RPC_HOME=$GOPATH/src/github.com/dnerochain/dnero-eth-rpc
-cd $DNERO_ETH_RPC_HOME
+export DNERO_ETH_RPC_ADAPTOR_HOME=$GOPATH/src/github.com/dnerochain/dnero-eth-rpc-adaptor
+cd $DNERO_ETH_RPC_ADAPTOR_HOME
 export GO111MODULE=on
 make install
 ```
 
-### Cross compilation for Windows
-On a macOS machine, the following command should build the `dnero-eth-rpc.exe` binary under `build/windows/`
+#### Cross compilation for Windows
+On a macOS machine, the following command should build the `dnero-eth-rpc-adaptor.exe` binary under `build/windows/`
 
 ```
 make windows
 ```
 
-## Run the Adaptor with a local Dnero private testnet
+#### Run the Adaptor with a local Dnero private testnet
 
-First, run a private testnet Dnero node with its RPC port opened at 15511:
+First, run a private testnet Dnero node with its RPC port opened at 16888:
 
 ```
 cd $DNERO_HOME
@@ -59,8 +59,8 @@ dnero start --config=../privatenet/node_eth_rpc --password=qwertyuiop
 Then, open another terminal, create the config folder for the RPC adaptor
 
 ```
-export DNERO_ETH_RPC_HOME=$GOPATH/src/github.com/dnerochain/dnero-eth-rpc
-cd $DNERO_ETH_RPC_HOME
+export DNERO_ETH_RPC_ADAPTOR_HOME=$GOPATH/src/github.com/dnerochain/dnero-eth-rpc-adaptor
+cd $DNERO_ETH_RPC_ADAPTOR_HOME
 mkdir -p ../privatenet/eth-rpc-adaptor
 ```
 
@@ -68,13 +68,13 @@ Use your favorite editor to open file `../privatenet/eth-rpc-adaptor/config.yaml
 
 ```
 dnero:
-  rpcEndpoint: "http://127.0.0.1:15511/rpc"
+  rpcEndpoint: "http://127.0.0.1:16888/rpc"
 rpc:
   enabled: true
-  httpAddress: "127.0.0.1"
-  httpPort: 15444
-  wsAddress: "127.0.0.1"
-  wsPort: 15445
+  httpAddress: "0.0.0.0"
+  httpPort: 18888
+  wsAddress: "0.0.0.0"
+  wsPort: 18889
   timeoutSecs: 600 
   maxConnections: 2048
 log:
@@ -84,13 +84,13 @@ log:
 Then, launch the adaptor binary with the following command:
 
 ```
-cd $DNERO_ETH_RPC_HOME
-dnero-eth-rpc start --config=../privatenet/eth-rpc-adaptor
+cd $DNERO_ETH_RPC_ADAPTOR_HOME
+dnero-eth-rpc-adaptor start --config=../privatenet/eth-rpc-adaptor
 ```
 
 The RPC adaptor will first create 10 test wallets, which will be useful for running tests with dev tools like Truffle, Hardhat. After the test wallets are created, the ETH RPC APIs will be ready for use.
 
-## RPC APIs
+### RPC APIs
 
 The RPC APIs should conform to the Ethereum JSON RPC API standard: https://eth.wiki/json-rpc/API. We currently support the following Ethereum RPC APIs:
 
@@ -127,14 +127,14 @@ The following examples demonstrate how to interact with the RPC APIs using the `
 
 ```
 # Query Chain ID
-curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":67}' http://localhost:15444/rpc
+curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":67}' http://localhost:18888/rpc
 
 # Query synchronization status
-curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' http://localhost:15444/rpc
+curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' http://localhost:18888/rpc
 
 # Query block number
-curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":83}' http://localhost:15444/rpc
+curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":83}' http://localhost:18888/rpc
 
 # Query account DToken balance (should return an integer which represents the current DToken balance in wei)
-curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x2E833968E5bB786Ae419c4d13189fB081Cc43bab", "latest"],"id":1}' http://localhost:15444/rpc
+curl -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x2E833968E5bB786Ae419c4d13189fB081Cc43bab", "latest"],"id":1}' http://localhost:18888/rpc
 ```

@@ -5,8 +5,8 @@ import (
 	"sync"
 
 	"github.com/spf13/viper"
-	"github.com/dnerochain/dnero-eth-rpc/common"
-	"github.com/dnerochain/dnero-eth-rpc/rpc"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/rpc"
 
 	erpclib "github.com/ethereum/go-ethereum/rpc"
 )
