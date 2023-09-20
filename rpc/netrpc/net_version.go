@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/dnerochain/dnero-eth-rpc/common"
+	"github.com/dnerochain/dnero-eth-rpc-adaptor/common"
 	hexutil "github.com/dnerochain/dnero/common/hexutil"
 	"github.com/dnerochain/dnero/ledger/types"
 	trpc "github.com/dnerochain/dnero/rpc"
@@ -44,7 +44,7 @@ func (e *NetRPCService) Version(ctx context.Context) (result string, err error) 
 	}
 
 	dneroChainID := dneroChainIDResult.chainID
-	ethChainID := types.MapChainID(dneroChainID, blockHeight).Uint64() //TODO: Upgrade
+	ethChainID := types.MapChainID(dneroChainID, blockHeight).Uint64()
 	result = hexutil.EncodeUint64(ethChainID)
 
 	return result, nil
