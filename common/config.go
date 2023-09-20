@@ -47,9 +47,9 @@ func init() {
 	viper.SetDefault(CfgDneroBlockGasLimit, 20000000)
 
 	viper.SetDefault(CfgRPCEnabled, true)
-	viper.SetDefault(CfgRPCHttpAddress, "127.0.0.1")
+	viper.SetDefault(CfgRPCHttpAddress, "0.0.0.0")
 	viper.SetDefault(CfgRPCHttpPort, "15444")
-	viper.SetDefault(CfgRPCWSAddress, "127.0.0.1")
+	viper.SetDefault(CfgRPCWSAddress, "0.0.0.0")
 	viper.SetDefault(CfgRPCWSPort, "15445")
 	viper.SetDefault(CfgRPCMaxConnections, 2048)
 	viper.SetDefault(CfgRPCTimeoutSecs, 600)
