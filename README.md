@@ -44,7 +44,7 @@ make windows
 
 #### Run the Adaptor with a local Dnero private testnet
 
-First, run a private testnet Dnero node with its RPC port opened at 16888:
+First, run a private testnet Dnero node with its RPC port opened at 15511:
 
 ```
 cd $DNERO_HOME
@@ -68,13 +68,13 @@ Use your favorite editor to open file `../privatenet/eth-rpc-adaptor/config.yaml
 
 ```
 dnero:
-  rpcEndpoint: "http://127.0.0.1:16888/rpc"
+  rpcEndpoint: "http://127.0.0.1:15511/rpc"
 rpc:
   enabled: true
   httpAddress: "0.0.0.0"
-  httpPort: 18888
+  httpPort: 15444
   wsAddress: "0.0.0.0"
-  wsPort: 18889
+  wsPort: 15445
   timeoutSecs: 600 
   maxConnections: 2048
 log:

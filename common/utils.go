@@ -252,31 +252,31 @@ func MapChainID(chainIDStr string, blockNumber string) string {
 	if HexStr2Uint64(blockNumber) < tcommon.HeightRPCCompatibility {
 		return mapChainIDWithoutOffset(chainIDStr)
 	}
-	if chainIDStr == "0x13bf" { // =>5055 correspond to Ropsten
-		return "testnet_sapphire"
-	} else if chainIDStr == "0x13c4" { // =>5060 correspond to the Ethereum mainnet
+	if chainIDStr == "0x160f" { // =>5647 correspond to the Ethereum mainnet
 		return "mainnet"
-	} else if chainIDStr == "0x13c5" { // =>5061 
-		return "testnet"
-	} else if chainIDStr == "0x13c9" { // =>5065
-		return "privatenet"
-	} else if chainIDStr == "0x13ce" { // =>5070 correspond to Rinkeby
+	} else if chainIDStr == "0x1611" { // =>5649 correspond to Ropsten
+		return "testnet_sapphire"
+	} else if chainIDStr == "0x1612" { // =>5650 correspond to Rinkeby
 		return "testnet_amber"
+	} else if chainIDStr == "0x1613" { // =>5651
+		return "testnet"
+	} else if chainIDStr == "0x1614" { // =>5652
+		return "privatenet"
 	}
 	return "" // all other chainIDs
 }
 
 func mapChainIDWithoutOffset(chainIDStr string) string {
-	if chainIDStr == "0x0" { // correspond to Ropsten
-		return "testnet_sapphire"
-	} else if chainIDStr == "0x1" { // correspond to the Ethereum mainnet
+	if chainIDStr == "0x0" { // correspond to the Ethereum mainnet
 		return "mainnet"
-	} else if chainIDStr == "0x2" {
-		return "testnet"
-	} else if chainIDStr == "0x3" {
-		return "privatenet"
-	} else if chainIDStr == "0x4" { // correspond to Rinkeby
+	} else if chainIDStr == "0x1" { // correspond to Ropsten
+		return "testnet_sapphire"
+	} else if chainIDStr == "0x2" {	// correspond to Rinkeby
 		return "testnet_amber"
+	} else if chainIDStr == "0x3" {
+		return "testnet"
+	} else if chainIDStr == "0x4" {
+		return "privatenet"
 	}
 	return "" // all other chainIDs
 }
