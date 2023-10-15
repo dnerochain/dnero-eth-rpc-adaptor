@@ -95,10 +95,10 @@ func (e *EthRPCService) GasPrice(ctx context.Context) (result string, err error)
 }
 
 func getDefaultGasPrice(client *rpcc.RPCClient) *big.Int {
-	gasPrice := big.NewInt(4000000000000) // Default for the Main Chain
+	gasPrice := big.NewInt(5000000000000) // ~ 0.1155 Default for the Main Chain - Orig: 4000000000000 ~ 0.0924
 	ethChainID, err := getEthChainID(client)
 	if err == nil {
-		if ethChainID > 1000 { // must be a Subchain
+		if ethChainID > 8000 { // must be a Subchain - Orig: > 1000
 			gasPrice = big.NewInt(1e8) // Default for the Subchains
 		}
 	}
